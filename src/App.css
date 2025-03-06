@@ -37,6 +37,10 @@ button {
 }
 
 @media (min-width: 460px) {
+  .game-container {
+    height: 500px;
+  }
+
   .dice-container {
     grid-template: auto auto / repeat(5, 1fr);
   }
