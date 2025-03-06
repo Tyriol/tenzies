@@ -4,17 +4,24 @@
   justify-content: center;
   align-items: center;
   background-color: lightgray;
-  height: 500px;
+  height: 95%;
   max-width: 500px;
   border-radius: 0.5rem;
   margin: 0 auto;
 }
 
+button {
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
 .dice-container {
   display: grid;
-  grid-template: auto auto / repeat(5, 1fr);
+  grid-template: auto auto auto auto / repeat(3, 1fr);
   gap: 1rem;
   width: 80%;
+  justify-items: center;
 
   & button {
     height: 50px;
@@ -22,5 +29,15 @@
     border: none;
     border-radius: 0.5rem;
     box-shadow: 1px 1px 2px 2px #4d4c4c;
+  }
+
+  & .single-item {
+    grid: 2 / 3;
+  }
+}
+
+@media (min-width: 460px) {
+  .dice-container {
+    grid-template: auto auto / repeat(5, 1fr);
   }
 }
