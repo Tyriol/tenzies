@@ -1,11 +1,7 @@
 import "./App.css";
 
 function App() {
-  return (
-    <>
-      <h1>Tenzies!</h1>
-    </>
-  );
+  return <main className="game-container"></main>;
 }
 
 export default App;
