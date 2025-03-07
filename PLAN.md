@@ -13,3 +13,10 @@
 - Turn dice state into an object ✅
   - Include an id (for the key) ✅
   - an isHeld boolean initially set to false ✅
+- Create a roll dice button
+  - Style ✅
+  - Add function to reroll dice and render ✅
+  - test ✅
+- Create style for held button based on isHeld value
+  - test
+- Create hold function to update die state to show isHeld

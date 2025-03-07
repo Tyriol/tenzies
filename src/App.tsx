@@ -10,7 +10,7 @@ interface diceObject {
 }
 
 function App() {
-  const [dice] = useState<diceObject[]>(() => generateNewRandomDice());
+  const [dice, setDice] = useState<diceObject[]>(() => generateNewRandomDice());
 
   function generateNewRandomDice() {
     return new Array(10).fill(0).map(() => ({
@@ -20,6 +20,10 @@ function App() {
     }));
   }
 
+  function rollDice() {
+    setDice(generateNewRandomDice());
+  }
+
   const diceElements = dice.map((die, i) => {
     return <Die key={die.id} value={die.value} className={i === dice.length - 1 ? true : false} />;
   });
@@ -27,6 +31,9 @@ function App() {
   return (
     <main className="game-container">
       <div className="dice-container">{diceElements}</div>
+      <button onClick={rollDice} className="game-action">
+        Roll
+      </button>
     </main>
   );
 }

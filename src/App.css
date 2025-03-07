@@ -1,7 +1,7 @@
 .game-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   background-color: lightgray;
   height: 95%;
@@ -12,8 +12,8 @@
 
 button {
   font-family: "Merriweather Sans", sans-serif;
-  font-weight: 700;
   font-size: 1.25rem;
+  box-shadow: 1px 1px 2px 2px #4d4c4c;
 }
 
 .dice-container {
@@ -26,14 +26,24 @@ button {
   & button {
     height: 50px;
     aspect-ratio: 1/1;
+    font-weight: 700;
     border: none;
     border-radius: 0.5rem;
-    box-shadow: 1px 1px 2px 2px #4d4c4c;
   }
 
   & .single {
     grid-column: 2 / 3;
   }
+}
+
+.game-action {
+  background-color: #0b341a;
+  padding: 0.5rem 1rem;
+  width: auto;
+  border: none;
+  border-radius: 0.5rem;
+  color: #f5f5f5;
+  font-weight: 500;
 }
 
 @media (min-width: 460px) {
