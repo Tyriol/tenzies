@@ -16,7 +16,7 @@ function App() {
     return new Array(10).fill(0).map(() => ({
       id: nanoid(),
       value: Math.ceil(Math.random() * 6),
-      isHeld: false,
+      isHeld: true,
     }));
   }
 
@@ -25,7 +25,14 @@ function App() {
   }
 
   const diceElements = dice.map((die, i) => {
-    return <Die key={die.id} value={die.value} className={i === dice.length - 1 ? true : false} />;
+    return (
+      <Die
+        key={die.id}
+        value={die.value}
+        isHeld={die.isHeld}
+        lastElement={i === dice.length - 1 ? true : false}
+      />
+    );
   });
 
   return (

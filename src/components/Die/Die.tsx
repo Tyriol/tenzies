@@ -1,10 +1,18 @@
 interface dieTypes {
   value: number;
-  className: Boolean;
+  lastElement: boolean;
+  isHeld: boolean;
 }
 
-export default function Die({ value, className }: dieTypes) {
-  {
-    return className ? <button className="single">{value}</button> : <button>{value}</button>;
-  }
+export default function Die({ value, lastElement, isHeld }: dieTypes) {
+  const isDiceHeld = isHeld ? "held" : "";
+  return (
+    <>
+      {lastElement ? (
+        <button className={`single ${isDiceHeld}`}>{value}</button>
+      ) : (
+        <button className={isDiceHeld}>{value}</button>
+      )}
+    </>
+  );
 }
