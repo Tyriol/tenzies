@@ -12,6 +12,11 @@ interface diceObject {
 function App() {
   const [dice, setDice] = useState<diceObject[]>(() => generateNewRandomDice());
 
+  const allDiceHeld = dice.every((die) => die.isHeld);
+  const allDiceEqual = dice.every((die) => die.value === dice[0].value);
+  const gameWon = allDiceHeld && allDiceEqual;
+  gameWon && console.log("game won");
+
   function generateNewRandomDice() {
     return new Array(10).fill(0).map(() => ({
       id: nanoid(),

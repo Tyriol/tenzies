@@ -23,8 +23,8 @@
 - Update rollDice function to only roll the dice that aren't held ✅
 - Add title and text ✅
 - Add end game functionality
-  - CHeck to see if all dice are held
-  - Check to see if all values are the same
+  - Check to see if all dice are held ✅
+  - Check to see if all values are the same ✅
   - add gameWon variable to signal game won condition
   - confetti!
   - update game-action button to display "play again"
