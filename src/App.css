@@ -10,10 +10,17 @@
   margin: 0 auto;
 }
 
+p {
+  padding: 0 1.5rem;
+  text-align: center;
+  font-weight: 300;
+}
+
 button {
   font-family: "Merriweather Sans", sans-serif;
   font-size: 1.25rem;
   box-shadow: 1px 1px 2px 2px #4d4c4c;
+  color: black;
 }
 
 .dice-container {
