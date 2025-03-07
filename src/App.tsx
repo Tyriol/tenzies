@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 import "./App.css";
 import Die from "./components/Die/Die";
 
@@ -67,6 +68,7 @@ function App() {
 
   return (
     <main className="game-container">
+      {gameWon && <Confetti />}
       <h1>🎲 TENZIES 🎲</h1>
       <p>
         Roll all dice untill they are the same. Click each die to freeze it at that value between
