@@ -21,7 +21,17 @@ function App() {
   }
 
   function rollDice() {
-    setDice(generateNewRandomDice());
+    setDice((prevDice) =>
+      prevDice.map((die) => {
+        if (!die.isHeld) {
+          return {
+            ...die,
+            value: Math.ceil(Math.random() * 6),
+          };
+        }
+        return die;
+      })
+    );
   }
 
   function hold(id: string) {

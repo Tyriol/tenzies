@@ -20,7 +20,7 @@
 - Create style for held button based on isHeld value ✅
   - test ✅
 - Create hold function to update die state to show isHeld ✅
-- Update rollDice function to only roll the dice that aren't held
+- Update rollDice function to only roll the dice that aren't held ✅
 - Add end game functionality
   - CHeck to see if all dice are held
   - Check to see if all values are the same
