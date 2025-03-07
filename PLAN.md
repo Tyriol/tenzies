@@ -32,7 +32,7 @@
 - Add Roll count: ✅
   - save in state ✅
   - render to screen above dice ✅
-- Add timer:
-  - investigate how to
-  - render to screen above dice on the right in line with roll count
-- style roll count and timer
+- Add timer: ✅
+  - investigate how to ✅
+  - render to screen above dice on the right in line with roll count ✅
+- style roll count and timer ✅

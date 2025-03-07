@@ -104,10 +104,16 @@ function App() {
         rolls
       </p>
       <div className="game-counters">
-        <p>Rolls: {rollCount}</p>
-        <p>
-          Timer: {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-        </p>
+        <div className="counter">
+          <p>Rolls</p>
+          <p>{rollCount}</p>
+        </div>
+        <div className="counter">
+          <p>Timer</p>
+          <p>
+            {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+          </p>
+        </div>
       </div>
       <div className="dice-container">{diceElements}</div>
       <button onClick={rollDice} className="game-action">
