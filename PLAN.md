@@ -29,3 +29,10 @@
   - confetti! ✅
   - update game-action button to display "play again" ✅
     - update rollDice function to start a new game if gameWon ✅
+- Add Roll count: ✅
+  - save in state ✅
+  - render to screen above dice ✅
+- Add timer:
+  - investigate how to
+  - render to screen above dice on the right in line with roll count
+- style roll count and timer

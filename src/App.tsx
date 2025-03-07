@@ -12,6 +12,7 @@ interface diceObject {
 
 function App() {
   const [dice, setDice] = useState<diceObject[]>(() => generateNewRandomDice());
+  const [rollCount, setRollCount] = useState<number>(0);
 
   const allDiceHeld = dice.every((die) => die.isHeld);
   const allDiceEqual = dice.every((die) => die.value === dice[0].value);
@@ -27,8 +28,10 @@ function App() {
 
   function rollDice() {
     if (gameWon) {
+      setRollCount(0);
       setDice(generateNewRandomDice());
     } else {
+      setRollCount((prevCount) => prevCount + 1);
       setDice((prevDice) =>
         prevDice.map((die) => {
           if (!die.isHeld) {
@@ -77,6 +80,9 @@ function App() {
         Roll all dice untill they are the same. Click each die to freeze it at that value between
         rolls
       </p>
+      <div className="game-counters">
+        <p>Rolls: {rollCount}</p>
+      </div>
       <div className="dice-container">{diceElements}</div>
       <button onClick={rollDice} className="game-action">
         {gameWon ? "Play again?" : "Roll"}
