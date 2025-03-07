@@ -16,12 +16,26 @@ function App() {
     return new Array(10).fill(0).map(() => ({
       id: nanoid(),
       value: Math.ceil(Math.random() * 6),
-      isHeld: true,
+      isHeld: false,
     }));
   }
 
   function rollDice() {
     setDice(generateNewRandomDice());
+  }
+
+  function hold(id: string) {
+    setDice((prevDice) =>
+      prevDice.map((die) => {
+        if (die.id === id) {
+          return {
+            ...die,
+            isHeld: !die.isHeld,
+          };
+        }
+        return die;
+      })
+    );
   }
 
   const diceElements = dice.map((die, i) => {
@@ -31,6 +45,7 @@ function App() {
         value={die.value}
         isHeld={die.isHeld}
         lastElement={i === dice.length - 1 ? true : false}
+        onClick={() => hold(die.id)}
       />
     );
   });
