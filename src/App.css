@@ -31,8 +31,8 @@ button {
     box-shadow: 1px 1px 2px 2px #4d4c4c;
   }
 
-  & .single-item {
-    grid: 2 / 3;
+  & .single {
+    grid-column: 2 / 3;
   }
 }
 
@@ -43,5 +43,9 @@ button {
 
   .dice-container {
     grid-template: auto auto / repeat(5, 1fr);
+
+    & .single {
+      grid-column: auto;
+    }
   }
 }
