@@ -16,7 +16,6 @@ function App() {
   const allDiceHeld = dice.every((die) => die.isHeld);
   const allDiceEqual = dice.every((die) => die.value === dice[0].value);
   const gameWon = allDiceHeld && allDiceEqual;
-  gameWon && console.log("game won");
 
   function generateNewRandomDice() {
     return new Array(10).fill(0).map(() => ({
@@ -27,17 +26,21 @@ function App() {
   }
 
   function rollDice() {
-    setDice((prevDice) =>
-      prevDice.map((die) => {
-        if (!die.isHeld) {
-          return {
-            ...die,
-            value: Math.ceil(Math.random() * 6),
-          };
-        }
-        return die;
-      })
-    );
+    if (gameWon) {
+      setDice(generateNewRandomDice());
+    } else {
+      setDice((prevDice) =>
+        prevDice.map((die) => {
+          if (!die.isHeld) {
+            return {
+              ...die,
+              value: Math.ceil(Math.random() * 6),
+            };
+          }
+          return die;
+        })
+      );
+    }
   }
 
   function hold(id: string) {
@@ -76,7 +79,7 @@ function App() {
       </p>
       <div className="dice-container">{diceElements}</div>
       <button onClick={rollDice} className="game-action">
-        Roll
+        {gameWon ? "Play again?" : "Roll"}
       </button>
     </main>
   );

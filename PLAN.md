@@ -27,5 +27,5 @@
   - Check to see if all values are the same ✅
   - add gameWon variable to signal game won condition ✅
   - confetti! ✅
-  - update game-action button to display "play again"
-    - update rollDice function to start a new game if gameWon
+  - update game-action button to display "play again" ✅
+    - update rollDice function to start a new game if gameWon ✅
