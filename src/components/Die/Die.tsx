@@ -10,11 +10,23 @@ export default function Die({ value, lastElement, isHeld, onClick }: dieTypes) {
   return (
     <>
       {lastElement ? (
-        <button onClick={onClick} className={`single ${isDiceHeld}`}>
+        <button
+          onClick={onClick}
+          className={`single ${isDiceHeld}`}
+          aria-pressed={isHeld}
+          aria-label={`Die with value ${value}, 
+        ${isHeld ? "held" : "not held"}`}
+        >
           {value}
         </button>
       ) : (
-        <button onClick={onClick} className={isDiceHeld}>
+        <button
+          onClick={onClick}
+          className={isDiceHeld}
+          aria-pressed={isHeld}
+          aria-label={`Die with value ${value}, 
+        ${isHeld ? "held" : "not held"}`}
+        >
           {value}
         </button>
       )}

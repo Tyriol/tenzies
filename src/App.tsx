@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 import "./App.css";
@@ -16,6 +16,8 @@ function App() {
   const [timer, setTimer] = useState<number>(0);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
+  const gameButton = useRef<HTMLButtonElement>(null);
+
   const allDiceHeld = dice.every((die) => die.isHeld);
   const allDiceEqual = dice.every((die) => die.value === dice[0].value);
   const gameWon = allDiceHeld && allDiceEqual;
@@ -32,6 +34,10 @@ function App() {
     }
     return () => clearInterval(interval);
   }, [isTimerRunning, gameWon]);
+
+  useEffect(() => {
+    gameWon && gameButton.current?.focus();
+  }, [gameWon]);
 
   function generateNewRandomDice() {
     return new Array(10).fill(0).map(() => ({
@@ -98,6 +104,14 @@ function App() {
   return (
     <main className="game-container">
       {gameWon && <Confetti />}
+      <div aria-live="polite" className="sr-only">
+        {gameWon && (
+          <p>
+            Congratulations, you won! with a time of {minutes}:{seconds} and {rollCount} rolls.
+            Click "Play Again" or press the spacebar to start a new game
+          </p>
+        )}
+      </div>
       <h1>🎲 TENZIES 🎲</h1>
       <p>
         Roll all dice untill they are the same. Click each die to freeze it at that value between
@@ -116,7 +130,7 @@ function App() {
         </div>
       </div>
       <div className="dice-container">{diceElements}</div>
-      <button onClick={rollDice} className="game-action">
+      <button ref={gameButton} onClick={rollDice} className="game-action">
         {gameWon ? "Play again?" : "Roll"}
       </button>
     </main>
