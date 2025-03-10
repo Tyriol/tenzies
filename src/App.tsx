@@ -107,8 +107,8 @@ function App() {
       <div aria-live="polite" className="sr-only">
         {gameWon && (
           <p>
-            Congratulations, you won! with a time of {minutes}:{seconds} and {rollCount} rolls.
-            Click "Play Again" or press the spacebar to start a new game
+            Congratulations, you won! with a time of {minutes} minutes and {seconds} seconds and{" "}
+            {rollCount} rolls. Click "Play Again" or press the spacebar to start a new game
           </p>
         )}
       </div>
