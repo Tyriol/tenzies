@@ -1,53 +1,55 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, JSX } from "react";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 import "./App.css";
 import Die from "./components/Die/Die";
 
-interface diceObject {
+interface Die {
   id: string;
   value: number;
   isHeld: boolean;
 }
 
 function App() {
-  const [dice, setDice] = useState<diceObject[]>(() => generateNewRandomDice());
+  const [dice, setDice] = useState<Die[]>(() => generateNewRandomDice());
   const [rollCount, setRollCount] = useState<number>(0);
   const [timer, setTimer] = useState<number>(0);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
   const gameButton = useRef<HTMLButtonElement>(null);
 
-  const allDiceHeld = dice.every((die) => die.isHeld);
-  const allDiceEqual = dice.every((die) => die.value === dice[0].value);
-  const gameWon = allDiceHeld && allDiceEqual;
+  const allDiceHeld: boolean = dice.every((die) => die.isHeld);
+  const allDiceEqual: boolean = dice.every((die) => die.value === dice[0].value);
+  const gameWon: boolean = allDiceHeld && allDiceEqual;
 
-  let minutes = Math.floor(timer / 60);
-  let seconds = timer - minutes * 60;
+  let minutes: number = Math.floor(timer / 60);
+  let seconds: number = timer - minutes * 60;
 
-  useEffect(() => {
+  useEffect((): (() => void) => {
     let interval: number;
     if (isTimerRunning && !gameWon) {
-      interval = setInterval(() => {
+      interval = setInterval((): void => {
         setTimer((prevTimer) => prevTimer + 1);
       }, 1000);
     }
-    return () => clearInterval(interval);
+    return (): void => clearInterval(interval);
   }, [isTimerRunning, gameWon]);
 
-  useEffect(() => {
+  useEffect((): void => {
     gameWon && gameButton.current?.focus();
   }, [gameWon]);
 
-  function generateNewRandomDice() {
-    return new Array(10).fill(0).map(() => ({
-      id: nanoid(),
-      value: Math.ceil(Math.random() * 6),
-      isHeld: false,
-    }));
+  function generateNewRandomDice(): Die[] {
+    return new Array(10).fill(0).map(
+      (): Die => ({
+        id: nanoid(),
+        value: Math.ceil(Math.random() * 6),
+        isHeld: false,
+      })
+    );
   }
 
-  function rollDice() {
+  function rollDice(): void {
     if (!isTimerRunning) {
       setIsTimerRunning(true);
     }
@@ -57,9 +59,9 @@ function App() {
       setTimer(0);
       setIsTimerRunning(false);
     } else {
-      setRollCount((prevCount) => prevCount + 1);
-      setDice((prevDice) =>
-        prevDice.map((die) => {
+      setRollCount((prevCount): number => prevCount + 1);
+      setDice((prevDice): Die[] =>
+        prevDice.map((die): Die => {
           if (!die.isHeld) {
             return {
               ...die,
@@ -72,12 +74,12 @@ function App() {
     }
   }
 
-  function hold(id: string) {
+  function hold(id: string): void {
     if (!isTimerRunning) {
       setIsTimerRunning(true);
     }
-    setDice((prevDice) =>
-      prevDice.map((die) => {
+    setDice((prevDice): Die[] =>
+      prevDice.map((die): Die => {
         if (die.id === id) {
           return {
             ...die,
@@ -89,7 +91,7 @@ function App() {
     );
   }
 
-  const diceElements = dice.map((die, i) => {
+  const diceElements = dice.map((die, i): JSX.Element => {
     return (
       <Die
         key={die.id}

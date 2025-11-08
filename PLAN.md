@@ -37,5 +37,5 @@
   - render to screen above dice on the right in line with roll count ✅
 - style roll count and timer ✅
 - add accessibility improvements ✅
-- update readme
+- update readme ✅
 - TODO: Refactor Die component to only use the one button

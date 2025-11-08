@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 interface dieTypes {
   value: number;
   lastElement: boolean;
@@ -5,7 +7,7 @@ interface dieTypes {
   onClick: () => void;
 }
 
-export default function Die({ value, lastElement, isHeld, onClick }: dieTypes) {
+export default function Die({ value, lastElement, isHeld, onClick }: dieTypes): JSX.Element {
   const isDiceHeld = isHeld ? "held" : "";
   return (
     <>
